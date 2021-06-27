@@ -6,7 +6,7 @@ import org.jeff.pojo.Users;
 import org.jeff.service.UserService;
 import org.jeff.utils.DateUtil;
 import org.jeff.utils.MD5Utils;
-import org.jeff.utils.Sex;
+import org.jeff.enums.Sex;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,5 +72,15 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Users queryUsersForLogin(String username, String password) {
+        // 校验用户名和密码是否正确
+        Example example = new Example(Users.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("username", username);
+        criteria.andEqualTo("password", password);
 
+        return usersMapper.selectOneByExample(example);
+    }
 }

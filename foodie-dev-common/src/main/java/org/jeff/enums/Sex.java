@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.enums;
 
 /**
  * <h2>性别 枚举</h2>

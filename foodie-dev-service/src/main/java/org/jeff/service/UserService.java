@@ -16,5 +16,9 @@ public interface UserService {
      */
     public Users createUser(UserBo userBo);
 
+    /**
+     * 用户登录
+     */
+    public Users queryUsersForLogin(String username, String password);
 
 }
