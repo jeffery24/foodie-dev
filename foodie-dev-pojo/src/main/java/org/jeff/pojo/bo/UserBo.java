@@ -1,4 +1,4 @@
-package org.jeff.bo;
+package org.jeff.pojo.bo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

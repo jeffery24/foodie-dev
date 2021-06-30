@@ -3,7 +3,7 @@ package org.jeff.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
-import org.jeff.bo.UserBo;
+import org.jeff.pojo.bo.UserBo;
 import org.jeff.pojo.Users;
 import org.jeff.service.UserService;
 import org.jeff.utils.CookieUtils;

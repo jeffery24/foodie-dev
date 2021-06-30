@@ -1,6 +1,6 @@
 package org.jeff.service.impl;
 
-import org.jeff.bo.UserBo;
+import org.jeff.pojo.bo.UserBo;
 import org.jeff.mapper.UsersMapper;
 import org.jeff.pojo.Users;
 import org.jeff.service.UserService;

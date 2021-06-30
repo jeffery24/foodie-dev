@@ -1,6 +1,6 @@
 package org.jeff.service;
 
-import org.jeff.bo.UserBo;
+import org.jeff.pojo.bo.UserBo;
 import org.jeff.pojo.Users;
 
 public interface UserService {
