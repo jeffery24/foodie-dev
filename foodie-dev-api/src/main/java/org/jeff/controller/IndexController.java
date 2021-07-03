@@ -7,6 +7,7 @@ import org.jeff.enums.YesOrNo;
 import org.jeff.pojo.Carousel;
 import org.jeff.pojo.Category;
 import org.jeff.pojo.vo.CategoryVO;
+import org.jeff.pojo.vo.NewItemsVo;
 import org.jeff.service.CarouselService;
 import org.jeff.service.CategoryService;
 import org.jeff.utils.JEFFJSONResult;
@@ -56,12 +57,27 @@ public class IndexController {
     public JEFFJSONResult subCat(
             @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
             @PathVariable Integer rootCatId) {
+
         if (rootCatId == null) {
             return JEFFJSONResult.errorMsg("分类不存在");
         }
+
         List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
         return JEFFJSONResult.ok(list);
     }
 
+    @ApiOperation(value = "查询每个一级分类下的最新6条商品数据", notes = "查询每个一级分类下的最新6条商品数据", httpMethod = "GET")
+    @GetMapping("/sixNewItems/{rootCatId}")
+    public JEFFJSONResult sixNewItems(
+            @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
+            @PathVariable Integer rootCatId) {
+
+        if (rootCatId == null) {
+            return JEFFJSONResult.errorMsg("分类不存在");
+        }
+
+        List<NewItemsVo> list = categoryService.getSixNewItemsLazy(rootCatId);
+        return JEFFJSONResult.ok(list);
+    }
 
 }
