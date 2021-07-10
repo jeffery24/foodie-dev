@@ -7,6 +7,7 @@ import org.jeff.mapper.*;
 import org.jeff.pojo.*;
 import org.jeff.pojo.vo.CommentVO;
 import org.jeff.pojo.vo.ItemCommentVO;
+import org.jeff.pojo.vo.SearchItemVO;
 import org.jeff.service.ItemsService;
 import org.jeff.utils.DesensitizationUtil;
 import org.jeff.utils.PagedGridResult;
@@ -129,5 +130,35 @@ public class ItemsServiceImpl implements ItemsService {
         grid.setRecords(pageList.getTotal());
         return grid;
     }
+
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", keywords);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemVO> list = itemsCustomMapper.searchItem(map);
+
+        return setPage(list, page);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -9,4 +9,5 @@ import org.springframework.stereotype.Controller;
 public class BaseController {
 
     public static final Integer COMMENT_PAGE_SIZE = 20;
+    public static final Integer SEARCH_PAGE_SIZE = 20;
 }

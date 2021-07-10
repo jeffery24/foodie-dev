@@ -23,4 +23,46 @@
      </if>
 
  </select>
+
+<!--
+ '参数'里面取值必须用 &{}
+-->
+  <select id="searchItem" parameterType="map"  resultType="org.jeff.pojo.vo.SearchItemVO">
+    SELECT
+      i.id AS itemId,
+      i.item_name AS itemName,
+      i.sell_counts AS sellCounts,
+      ii.url AS imgUrl,
+      tempSpec.price_discount AS price
+    FROM
+        items i
+        LEFT JOIN
+            items_img ii
+        ON i.id = ii.item_id
+        LEFT JOIN ( SELECT item_id, MIN( price_discount ) as price_discount  FROM items_spec GROUP BY item_id) tempSpec
+        ON i.id = tempSpec.item_id
+    WHERE
+      ii.is_main = 1
+    <if test="paramsMap.keywords != null and paramsMap.keywords != '' ">
+      AND
+      i.item_name like '%${paramsMap.keywords}%'
+    </if>
+    order by
+    <choose>
+      <when test="paramsMap.sort == &quot;c&quot; ">
+        i.sell_counts desc
+      </when>
+      <when test="paramsMap.sort == &quot;p&quot; ">
+        tempSpec.price_discount asc
+      </when>
+      <otherwise>
+        i.item_name asc
+      </otherwise>
+    </choose>
+  </select>
+    <!--
+      k : 默认排序,根据name
+      c : 按照销量
+      p: 按照价格
+    -->
 </mapper>
