@@ -129,5 +129,34 @@ public class ItemsController extends BaseController{
     }
 
 
+    @ApiOperation(value = "通过分类id搜索商品列表", notes = "通过分类id搜索商品列表", httpMethod = "GET")
+    @GetMapping("/catItems")
+    public JEFFJSONResult catItems(
+            @ApiParam(name = "catId", value = "三级分类ID", required = true)
+            @RequestParam Integer catId,
+            @ApiParam(name = "sort", value = "排序规则", required = false)
+            @RequestParam String sort,
+            @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
+            @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
+            @RequestParam Integer pageSize
+    ) {
+
+        if (catId == null){
+            return JEFFJSONResult.errorMsg(null);
+        }
+        if (page==null){
+            page = 1;
+        }
+        if (pageSize == null) {
+            pageSize = SEARCH_PAGE_SIZE;
+        }
+
+        PagedGridResult grid = itemsService.searchItems(catId, sort, page, pageSize);
+
+        return JEFFJSONResult.ok(grid);
+    }
+
+
 
 }
