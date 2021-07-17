@@ -19,7 +19,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource # 数据源类型：HikariCP
     driver-class-name: com.mysql.jdbc.Driver # mysql驱动
 #    Jeff - Cent-OS-7.6-MYSQL-5.7
-    url: jdbc:mysql://47.107.54.10:3306/foodie-shop-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    url: jdbc:mysql://47.107.54.10:3306/foodie-shop-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
 #    url: jdbc:mysql://192.168.1.33:3306/foodie-shop-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: root
     password: root_123456

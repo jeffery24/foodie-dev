@@ -10,6 +10,7 @@ import org.jeff.pojo.ItemsParam;
 import org.jeff.pojo.ItemsSpec;
 import org.jeff.pojo.vo.CommentVO;
 import org.jeff.pojo.vo.ItemVO;
+import org.jeff.pojo.vo.ShopcartVO;
 import org.jeff.service.ItemsService;
 import org.jeff.utils.JEFFJSONResult;
 import org.jeff.utils.PagedGridResult;
@@ -156,6 +157,22 @@ public class ItemsController extends BaseController{
 
         return JEFFJSONResult.ok(grid);
     }
+
+    //用户多时间不登录,刷新购物车中的数据,(最主要的价格),类似淘宝京东
+    @ApiOperation(value = "通过商品规格查询最新的商品数据", notes = "通过商品规格查询最新的商品数据", httpMethod = "GET")
+    @GetMapping("/refresh")
+    public JEFFJSONResult refresh(
+            @ApiParam(name = "itemSpecIds", value = "拼接地规格ids", required = true,example = "1001,1002,1004")
+            @RequestParam String itemSpecIds) {
+
+        if (itemSpecIds == null){
+            return JEFFJSONResult.ok();
+        }
+
+        List<ShopcartVO> list = itemsService.queryItemBySpecIds(itemSpecIds);
+        return JEFFJSONResult.ok(list);
+    }
+
 
 
 

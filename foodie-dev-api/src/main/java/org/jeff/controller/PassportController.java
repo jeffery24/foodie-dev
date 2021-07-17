@@ -82,6 +82,8 @@ public class PassportController {
         user = setNullProperty(user);
         CookieUtils.setCookie(request, response, "userInfo",
                 JsonUtils.objectToJson(user), true);
+        //TODO 生成用户token,放入redis会话
+        //TODO 同步购物车数据
         return JEFFJSONResult.ok();
     }
 
@@ -107,8 +109,11 @@ public class PassportController {
         }
         // 将用户信息存入到 cookie 中,隐藏掉部分信息,并且加密
         user = setNullProperty(user);
-        CookieUtils.setCookie(request, response, "userInfo",
+        CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(user), true);
+
+        //TODO 生成用户token,放入redis会话
+        //TODO 同步购物车数据
         return JEFFJSONResult.ok(user);
     }
 

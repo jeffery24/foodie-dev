@@ -5,6 +5,7 @@ import org.jeff.pojo.ItemsImg;
 import org.jeff.pojo.ItemsParam;
 import org.jeff.pojo.ItemsSpec;
 import org.jeff.pojo.vo.CommentVO;
+import org.jeff.pojo.vo.ShopcartVO;
 import org.jeff.utils.PagedGridResult;
 
 import java.util.List;
@@ -77,4 +78,11 @@ public interface ItemsService {
      * @return
      */
     public PagedGridResult searchItems(Integer catId, String sort, Integer page, Integer pageSize);
+
+    /**
+     * 通过规格ids查询购物车中商品数据
+     * @param specIds
+     * @return
+     */
+    public List<ShopcartVO> queryItemBySpecIds(String specIds);
 }
