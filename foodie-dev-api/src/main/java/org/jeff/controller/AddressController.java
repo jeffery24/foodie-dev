@@ -6,8 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.jeff.pojo.UserAddress;
 import org.jeff.pojo.bo.AddressBO;
 import org.jeff.service.AddressService;
-import org.jeff.utils.JEFFJSONResult;
-import org.jeff.utils.MobileEmailUtils;
+import org.jeff.util.JEFFJSONResult;
+import org.jeff.util.MobileEmailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

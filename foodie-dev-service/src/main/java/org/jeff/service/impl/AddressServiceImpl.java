@@ -81,6 +81,7 @@ public class AddressServiceImpl implements AddressService {
         userAddressMapper.delete(address);
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public void updateUserAddressToBeDefault(String userId, String addressId) {
 
@@ -101,6 +102,16 @@ public class AddressServiceImpl implements AddressService {
         defaultAddress.setUserId(userId);
         defaultAddress.setIsDefault(YesOrNo.YES.type);
         userAddressMapper.updateByPrimaryKeySelective(defaultAddress);
+
+    }
+
+    @Override
+    public UserAddress queryUserAddress(String userId, String addressId) {
+        UserAddress singleAddress = new UserAddress();
+        singleAddress.setId(addressId);
+        singleAddress.setUserId(userId);
+
+        return userAddressMapper.selectOne(singleAddress);
 
     }
 }

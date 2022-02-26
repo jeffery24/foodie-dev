@@ -5,7 +5,6 @@ package org.jeff.pojo.bo;
  */
 public class AddressBO {
     private String addressId;
-
     private String userId;
     private String receiver;
     private String mobile;

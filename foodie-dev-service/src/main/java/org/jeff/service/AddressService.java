@@ -31,7 +31,20 @@ public interface AddressService {
      */
     public void deleteUserAddress(String userId, String addressId);
 
+    /**
+     * 设置为默认地址
+     * @param userId
+     * @param addressId
+     */
     public void updateUserAddressToBeDefault(String userId, String addressId);
+
+    /**
+     * 根据用户id和地址id查询用户详细地址
+     * @param userId
+     * @param addressId
+     * @return
+     */
+    public UserAddress queryUserAddress(String userId, String addressId);
 
 
 }
