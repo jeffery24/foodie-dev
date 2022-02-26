@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.jeff.mapper.ItemsCustomMapper" >
- <select id="queryItemComments" parameterType="map"  resultType="org.jeff.pojo.vo.ItemCommentVO">
+    <select id="queryItemComments" parameterType="map"  resultType="org.jeff.pojo.vo.ItemCommentVO">
    SELECT
      ic.comment_level AS commentLevel,
      ic.content AS content,
@@ -125,4 +125,17 @@
         #{specId}
       </foreach>
   </select>
+
+<!--乐观锁-->
+  <update id="decreaseItemSpecStock">
+    update
+        items_spec
+    set
+        stock =stock-#{pendingCounts}
+    where
+        id = #{specId}
+    and
+        stock>=#{pendingCounts}
+  </update>
+
 </mapper>

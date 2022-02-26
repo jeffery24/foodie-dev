@@ -1,15 +1,16 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.util.Lists;
 
 import java.util.List;
 
 /**
  * 
  * @Title: JsonUtils.java
- * @Package org.jeff.utils
+ * @Package org.jeff.util
  * @Description: json转换类
  * Copyright: Copyright (c)
  * Company:
@@ -68,7 +69,8 @@ public class JsonUtils {
 			e.printStackTrace();
 		}
     	
-    	return null;
+    	return Lists.emptyList();
+    	//return null;
     }
     
 }
