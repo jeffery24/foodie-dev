@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

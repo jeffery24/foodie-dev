@@ -1,7 +1,7 @@
 package org.jeff.enums;
 
 /**
- * <h2></h2>
+ *
  */
 public enum YesOrNo {
     NO(0, "否"),

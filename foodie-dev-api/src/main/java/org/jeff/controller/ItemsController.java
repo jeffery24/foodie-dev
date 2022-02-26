@@ -12,8 +12,8 @@ import org.jeff.pojo.vo.CommentVO;
 import org.jeff.pojo.vo.ItemVO;
 import org.jeff.pojo.vo.ShopcartVO;
 import org.jeff.service.ItemsService;
-import org.jeff.utils.JEFFJSONResult;
-import org.jeff.utils.PagedGridResult;
+import org.jeff.util.JEFFJSONResult;
+import org.jeff.util.PagedGridResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import java.util.List;
 @RequestMapping("items")
 public class ItemsController extends BaseController{
 
-    public static Logger logger = LoggerFactory.getLogger(ItemsController.class);
+    private static Logger logger = LoggerFactory.getLogger(ItemsController.class);
 
     @Autowired
     private ItemsService itemsService;
@@ -36,7 +36,7 @@ public class ItemsController extends BaseController{
     @GetMapping("/info/{itemId}")
     public JEFFJSONResult queryItemsInfo(
             @ApiParam(name = "itemId", value = "商品id", required = true)
-            @PathVariable String itemId) {
+            @PathVariable java.lang.String itemId) {
 
         if (StringUtils.isBlank(itemId)){
             return JEFFJSONResult.errorMsg(null);
@@ -76,7 +76,7 @@ public class ItemsController extends BaseController{
     @GetMapping("/comments")
     public JEFFJSONResult queryItemComment(
             @ApiParam(name = "itemId", value = "商品id", required = true)
-            @RequestParam String itemId,
+            @RequestParam java.lang.String itemId,
             @ApiParam(name = "level", value = "评价等级", required = false)
             @RequestParam Integer level,
             @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
@@ -92,7 +92,7 @@ public class ItemsController extends BaseController{
             page = 1;
         }
         if (pageSize == null) {
-            pageSize = COMMENT_PAGE_SIZE;
+            pageSize = COMMON_PAGE_SIZE;
         }
 
         PagedGridResult grid = itemsService.queryPageComments(itemId, level, page, pageSize);
@@ -105,9 +105,9 @@ public class ItemsController extends BaseController{
     @GetMapping("/search")
     public JEFFJSONResult search(
             @ApiParam(name = "keywords", value = "关键词", required = true)
-            @RequestParam String keywords,
+            @RequestParam java.lang.String keywords,
             @ApiParam(name = "sort", value = "排序规则", required = false)
-            @RequestParam String sort,
+            @RequestParam java.lang.String sort,
             @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
             @RequestParam Integer page,
             @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
@@ -136,7 +136,7 @@ public class ItemsController extends BaseController{
             @ApiParam(name = "catId", value = "三级分类ID", required = true)
             @RequestParam Integer catId,
             @ApiParam(name = "sort", value = "排序规则", required = false)
-            @RequestParam String sort,
+            @RequestParam java.lang.String sort,
             @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
             @RequestParam Integer page,
             @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
@@ -163,7 +163,7 @@ public class ItemsController extends BaseController{
     @GetMapping("/refresh")
     public JEFFJSONResult refresh(
             @ApiParam(name = "itemSpecIds", value = "拼接地规格ids", required = true,example = "1001,1002,1004")
-            @RequestParam String itemSpecIds) {
+            @RequestParam java.lang.String itemSpecIds) {
 
         if (itemSpecIds == null){
             return JEFFJSONResult.ok();

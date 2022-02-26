@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 /**
  * 通用脱敏工具类

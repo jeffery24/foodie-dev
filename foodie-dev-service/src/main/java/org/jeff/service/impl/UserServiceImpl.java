@@ -4,8 +4,8 @@ import org.jeff.pojo.bo.UserBo;
 import org.jeff.mapper.UsersMapper;
 import org.jeff.pojo.Users;
 import org.jeff.service.UserService;
-import org.jeff.utils.DateUtil;
-import org.jeff.utils.MD5Utils;
+import org.jeff.util.DateUtil;
+import org.jeff.util.MD5Utils;
 import org.jeff.enums.Sex;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 //        默认生日
         user.setBirthday(DateUtil.stringToDate("1900-01-01"));
 //        默认性别 保密
-        user.setSex(Sex.screen.type);
+        user.setSex(Sex.SCREEN.type);
         user.setCreatedTime(new Date());
         user.setUpdatedTime(new Date());
 

@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -602,9 +602,7 @@ public class DateUtil {
      * 
      * @Description: 获得本月的最后一天日期
      * @return
-     * 
-     * @author leechenxiang
-     * @date 2017年5月31日 下午1:37:50
+     *
      */
     public static String getLastDateOfThisMonth() {
     	SimpleDateFormat format = new SimpleDateFormat(ISO_EXPANDED_DATE_FORMAT);  
@@ -649,7 +647,7 @@ public class DateUtil {
 //	{
 ////    	String timeDir=DateUtil.dateToString(new Date(),DateUtil.ISO_EXPANDED_DATE_FORMAT);
 ////		System.out.println(timeDir);
-//    	boolean flag = com.imooc.utils.DateUtil.isValidDate("1990-10-32", com.imooc.utils.DateUtil.ISO_EXPANDED_DATE_FORMAT);
+//    	boolean flag = com.imooc.util.DateUtil.isValidDate("1990-10-32", com.imooc.util.DateUtil.ISO_EXPANDED_DATE_FORMAT);
 //    	System.out.println(flag);
 //	}
     

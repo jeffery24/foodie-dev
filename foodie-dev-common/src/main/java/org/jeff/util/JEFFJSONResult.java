@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author JEFF
  * @version V1.0
  * @Title: JEFFJSONResult.java
- * @Package org.jeff.utils
+ * @Package org.jeff.util
  * @Description: 自定义响应数据结构
  * 本类可提供给 H5/ios/安卓/公众号/小程序 使用
  * 前端接受此类数据（json object)后，可自行根据业务去实现相关功能

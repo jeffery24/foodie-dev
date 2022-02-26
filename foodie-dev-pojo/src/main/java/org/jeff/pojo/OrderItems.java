@@ -1,8 +1,6 @@
 package org.jeff.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "order_items")
 public class OrderItems {

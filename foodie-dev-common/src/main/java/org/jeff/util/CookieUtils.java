@@ -1,4 +1,4 @@
-package org.jeff.utils;
+package org.jeff.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,17 +14,13 @@ import java.net.URLEncoder;
 /**
  * 
  * @Title: CookieUtils.java
- * @Package org.jeff.utils
+ * @Package org.jeff.util
  * @Description: Cookie 工具类
- * Copyright: Copyright (c)
- * Company: jeff
- *
- * @author imooc
  * @version V1.0
  */
 public final class CookieUtils {
 
-    final static Logger logger = LoggerFactory.getLogger(org.jeff.utils.CookieUtils.class);
+    final static Logger logger = LoggerFactory.getLogger(org.jeff.util.CookieUtils.class);
 	
 	/**
 	 * 
@@ -209,7 +205,7 @@ public final class CookieUtils {
             	String domainName = getDomainName(request);
                 logger.info("========== domainName: {} ==========", domainName);
                 if (!"localhost".equals(domainName)) {
-                	cookie.setDomain(domainName);
+                	cookie.setDomain(domainName.trim());
                 }
             }
             cookie.setPath("/");

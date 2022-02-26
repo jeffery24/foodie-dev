@@ -3,6 +3,7 @@ package org.jeff.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.jeff.enums.CommentLevel;
+import org.jeff.enums.YesOrNo;
 import org.jeff.mapper.*;
 import org.jeff.pojo.*;
 import org.jeff.pojo.vo.CommentVO;
@@ -10,8 +11,8 @@ import org.jeff.pojo.vo.ItemCommentVO;
 import org.jeff.pojo.vo.SearchItemVO;
 import org.jeff.pojo.vo.ShopcartVO;
 import org.jeff.service.ItemsService;
-import org.jeff.utils.DesensitizationUtil;
-import org.jeff.utils.PagedGridResult;
+import org.jeff.util.DesensitizationUtil;
+import org.jeff.util.PagedGridResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -120,7 +121,7 @@ public class ItemsServiceImpl implements ItemsService {
         return setPage(list, page);
     }
 
-    public PagedGridResult setPage(List<?> list,Integer page){
+    public PagedGridResult setPage(List<?> list, Integer page) {
         PageInfo<?> pageList = new PageInfo<>(list);
         PagedGridResult grid = new PagedGridResult();
         grid.setPage(page);
@@ -161,8 +162,46 @@ public class ItemsServiceImpl implements ItemsService {
     public List<ShopcartVO> queryItemBySpecIds(String specIds) {
         String[] split = specIds.split(",");
         List<String> specIdsList = new ArrayList<>();
-        Collections.addAll(specIdsList,split);
+        Collections.addAll(specIdsList, split);
 
         return itemsCustomMapper.queryItemBySpecIds(specIdsList);
+    }
+
+    @Override
+    public ItemsSpec queryItemSpec(String specId) {
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+
+    @Override
+    public String queryItemMainImgById(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+        return result != null ? result.getUrl() : " ";
+    }
+
+    @Override
+    public void decreaseItemSpecStock(String itemSpecId, int buyCounts) {
+        // synchronized 不推荐使用,集群下无用,效率低下
+        // 锁数据库：不推荐,导致数据库性能低下
+        // 分布式锁: Zookeeper、Redis
+
+        // lockUtil.getLock(); -- 加锁
+        //1.查询库存
+        //    int stock = 10;
+
+        //2.判断库存,是否能够减少到0以下
+
+        //if (stock - buyCounts >0){
+        // 提示用户库存不够
+//            10 - 3 -3 - 5 = -1
+//        }
+        // lockUtil.unLock(); -- 解锁
+        int result = itemsCustomMapper.decreaseItemSpecStock(itemSpecId, buyCounts);
+        if (result != 1) {
+            throw new RuntimeException("订单创建失败，原因：库存不足!");
+        }
     }
 }

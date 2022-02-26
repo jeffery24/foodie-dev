@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServiceLogAspect {
 
-    public static final Logger log = LoggerFactory.getLogger(ServiceLogAspect.class);
+    private static final Logger log = LoggerFactory.getLogger(ServiceLogAspect.class);
 
     /**
      * AOP 通知
