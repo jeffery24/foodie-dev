@@ -1,0 +1,25 @@
+server:
+  port: 8033
+
+spring:
+  datasource:                                           # 数据源的相关配置
+    type: com.zaxxer.hikari.HikariDataSource # 数据源类型：HikariCP
+    driver-class-name: com.mysql.jdbc.Driver # mysql驱动
+    url: jdbc:mysql://47.107.54.10:3306/foodie-shop-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    username: root
+    password: root_123456
+  elasticsearch:
+    rest:
+      uris: 182.92.131.93:9200
+
+# # 下面的这两个属性在新版本的springboot中已经不建议使用，9300属于elasticsearch各节点之间的通讯接口。
+#  属于lowlevelclient。推荐使用9200的RestHighLevelClient去链接
+#  data:
+#    elasticsearch:
+#      cluster-nodes: 182.92.131.93:9300
+##      cluster-nodes: 182.92.131.93:9300,182.92.131.94:9300,182.92.131.94:9300
+#      cluster-name: elasticsearch
+
+#elasticsearch:
+#  host: 182.92.131.93
+#  port: 9300

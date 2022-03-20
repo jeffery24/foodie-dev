@@ -56,6 +56,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/mycomments/*")
                 .excludePathPatterns("/myorders/deliver")
                 .excludePathPatterns("/orders/notifyMerchantOrderPaid")
+                .excludePathPatterns("/center/userInfo")
         ;
 
         WebMvcConfigurer.super.addInterceptors(registry);
