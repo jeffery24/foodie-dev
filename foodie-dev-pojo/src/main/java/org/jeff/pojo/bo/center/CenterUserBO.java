@@ -1,5 +1,6 @@
 package org.jeff.pojo.bo.center;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
@@ -39,6 +40,7 @@ public class CenterUserBO {
     @ApiModelProperty(value = "性别", name = "sex", example = "0:女 1:男 2:保密", required = false)
     private Integer sex;
     @ApiModelProperty(value = "生日", name = "birthday", example = "1900-01-01", required = false)
+    @JsonFormat()
     private Date birthday;
 
     public String getUsername() {

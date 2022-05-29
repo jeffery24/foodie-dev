@@ -95,6 +95,7 @@ public class PassportController extends BaseController {
         return JEFFJSONResult.ok();
     }
 
+    @CrossOrigin
     @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
     @PostMapping("/login")
     public JEFFJSONResult login(@RequestBody UserBo userBo,
@@ -198,14 +199,14 @@ public class PassportController extends BaseController {
                 shopcartListRedis.addAll(shopcartListCookie);
                 //更新到redis和cookie
                 redisOperator.set(shopcartRedisKey, JsonUtils.objectToJson(shopcartListRedis));
-                CookieUtils.setCookie(request, response, FOODIE_SHOPCART, JsonUtils.objectToJson(shopcartListRedis));
+                CookieUtils.setCookie(request, response, FOODIE_SHOPCART, JsonUtils.objectToJson(shopcartListRedis),true);
             } else {
-                CookieUtils.setCookie(request, response, FOODIE_SHOPCART, shopcartJsonRedis);
+                CookieUtils.setCookie(request, response, FOODIE_SHOPCART, shopcartJsonRedis,true);
             }
         }
     }
 
-    @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
+    @ApiOperation(value = "用户退出", notes = "用户退出", httpMethod = "POST")
     @PostMapping("/logout")
     public JEFFJSONResult logout(@RequestParam String userId, HttpServletRequest request, HttpServletResponse response) {
 

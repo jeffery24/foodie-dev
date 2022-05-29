@@ -36,8 +36,11 @@ spring:
       connection-test-query: SELECT 1
   servlet:
     multipart:
-      max-file-size: 512000 # 文件请求大小限制500kb
-      max-request-size: 512000 # 请求大小限制为500kb
+#      max-file-size: 512000 # 文件请求大小限制500kb
+#      max-request-size: 512000 # 请求大小限制为500kb
+        max-file-size: -1 # 文件请求大小限制500kb
+        max-request-size: -1 # 请求大小限制为500kb
+
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss

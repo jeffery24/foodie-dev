@@ -32,11 +32,11 @@ public class Swagger {
         return new ApiInfoBuilder()
                 .title("天天吃货 电商平台接口api")    // 文档页标题
                 .contact(new Contact("jeff", //姓名
-                        "https://jeff.org",
+                        "https://zsj.zone",
                         "3100611529@qq.com")) // 联系人方式邮箱
                 .description("专为天天吃货提供的api文档") //详细信息
                 .version("1.0.1") // 版本
-                .termsOfServiceUrl("https://www.jeff.org") //网站地址
+                .termsOfServiceUrl("https://www.zsj.zone") //网站地址
                 .build();
     }
 
