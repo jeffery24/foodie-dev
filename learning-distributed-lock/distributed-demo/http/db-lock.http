@@ -1,0 +1,4 @@
+### 悲观锁-分布式锁 8080
+GET http://localhost:8080/singleLock-db
+### 悲观锁-分布式锁 8081
+GET http://localhost:8081/singleLock-db

@@ -1,0 +1,4 @@
+### 单体应用锁
+GET http://localhost:8080/singleLock
+###
+GET http://localhost:8081/singleLock
