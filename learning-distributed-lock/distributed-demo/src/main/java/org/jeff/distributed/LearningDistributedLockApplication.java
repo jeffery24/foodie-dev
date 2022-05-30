@@ -3,11 +3,10 @@ package org.jeff.distributed;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan("org.jeff.distributed.dao")
-@EnableScheduling
+//@EnableScheduling
 public class LearningDistributedLockApplication {
 
     public static void main(String[] args) {
