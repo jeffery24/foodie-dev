@@ -1,0 +1,4 @@
+### Redisson 实分布式锁
+GET http://localhost:8080/zkLock
+###
+GET http://localhost:8081/zkLock

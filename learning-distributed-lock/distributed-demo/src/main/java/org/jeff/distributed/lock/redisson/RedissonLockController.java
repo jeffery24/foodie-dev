@@ -1,4 +1,4 @@
-package org.jeff.distributed.redisson;
+package org.jeff.distributed.lock.redisson;
 
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;

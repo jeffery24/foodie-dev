@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * 基于 Redis NX 实现分布锁
  * @author jeff
  * @since 1.0.0
  */
