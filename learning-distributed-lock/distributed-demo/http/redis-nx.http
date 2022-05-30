@@ -1,0 +1,4 @@
+### Redis NX 实分布式锁
+GET http://localhost:8080/redisLock
+###
+GET http://localhost:8081/redisLock
